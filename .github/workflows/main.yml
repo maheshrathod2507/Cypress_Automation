@@ -20,6 +20,8 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: '18'
+    - name: run cypress
+      run: npx cypress run
     - name: Output the Reports
       if: always()
       uses: actions/upload-artifact@v2
