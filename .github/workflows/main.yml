@@ -1,0 +1,30 @@
+name: Regression Test Runs
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  workflow_dispatch:
+
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up node 18
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+    - name: Output the Reports
+      if: always()
+      uses: actions/upload-artifact@v2
+      with:
+         name: TestReport
+         path: ./cypress/videos
+       
+       
